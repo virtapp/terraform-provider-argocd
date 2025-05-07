@@ -1,6 +1,6 @@
 
 
-## Terraform | Managing ArgoCD Applications using Terraform 🚀
+## ArgoCD | Managing Applications using Terraform 🚀
 
 
 
