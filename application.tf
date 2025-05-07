@@ -26,3 +26,32 @@ resource "argocd_application" "httpd" {
     }
   }
 }
+
+resource "argocd_application" "apache" {
+  metadata {
+    name      = "apache"
+    namespace = "argocd"
+  }
+
+  spec {
+    project = "default"
+
+    source {
+      repo_url        = "https://gitlab.com/virtapp-infra/global-charts.git"
+      target_revision = "HEAD"
+      path            = "apache"
+    }
+
+    destination {
+      server    = "https://kubernetes.default.svc"
+      namespace = "default"
+    }
+
+    sync_policy {
+      automated {
+        prune = true
+        self_heal = true
+      }
+    }
+  }
+}
