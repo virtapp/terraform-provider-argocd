@@ -1,4 +1,5 @@
-![images](https://github.com/user-attachments/assets/a5335441-b19f-454e-9f88-e852fca7a519)
+![Untitled](https://github.com/user-attachments/assets/43273e80-3b29-498a-baf4-488fd044a711)
+
 
 
 ## ArgoCD | Managing Applications using Terraform 🚀
