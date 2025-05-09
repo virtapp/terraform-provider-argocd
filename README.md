@@ -22,10 +22,41 @@ terraform plan -var-file="template.tfvars"
 terraform apply -var-file="template.tfvars" -auto-approve
 ```
 
-🧩 Config 
+🧩 Ingress Example 
 
 ```
-scp -i ~/.ssh/<your pem file> <your pem file> ec2-user@<terraform instance public ip>:/home/ec2-user
-chmod 400 <your pem file>
+resource "kubernetes_ingress_v1" "my_app_ingress" {
+  metadata {
+    name      = "my-app-ingress"
+    namespace = "default"
+    annotations = {
+      "kubernetes.io/ingress.class" = "nginx"
+    }
+  }
+
+  spec {
+    rule {
+      host = "my-app.example.com"
+
+      http {
+        path {
+          path     = "/"
+          path_type = "Prefix"
+
+          backend {
+            service {
+              name = "my-app-service"  # the service Argo CD deploys
+              port {
+                number = 80
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  depends_on = [argocd_application.my_app]  # ensure Argo CD app is created first
+}
 ```
 
