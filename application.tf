@@ -40,8 +40,15 @@ resource "argocd_application" "apache" {
       repo_url        = "https://gitlab.com/virtapp-infra/global-charts.git"
       target_revision = "HEAD"
       path            = "apache"
+      helm {
+        values = <<EOF
+replicaCount: 2
+service:
+  type: ClusterIP
+  port: 80
+EOF
     }
-
+}
     destination {
       server    = "https://kubernetes.default.svc"
       namespace = "default"
