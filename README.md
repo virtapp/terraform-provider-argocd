@@ -1,7 +1,7 @@
 ![image](https://github.com/user-attachments/assets/3ae11adb-590b-4c17-bbea-69bb89bd25c0)
 
 
-## ArgoCD | Managing Applications using Terraform 🚀
+## Module ArgoCD | Managing Applications using Terraform 🚀
 Deploy application using terraform in which you can have multiple iterations of same resource based on the resource or different application. Usage of terraform can simplified the deployment, however it depends on your use case and scenario
 
 
